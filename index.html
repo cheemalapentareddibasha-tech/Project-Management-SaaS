@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TaskFlow - Modern Project Management SaaS</title>
+  <meta name="description" content="Simple, professional, and responsive Project Management SaaS web app built with HTML, CSS, and JavaScript.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Mobile Sidebar Overlay Backdrop -->
+  <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+  <div class="app-container">
+
+    <!-- ==================== SIDEBAR ==================== -->
+    <aside id="sidebar" class="sidebar">
+      <div class="sidebar-header">
+        <div class="brand-logo">TF</div>
+        <div class="brand-info">
+          <h1>TaskFlow</h1>
+          <span class="brand-badge">SaaS Edition</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-label">Workspace</div>
+        <a href="#dashboard" class="nav-link active" data-view="dashboard">
+          <svg class="nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+          </svg>
+          <span>Dashboard</span>
+        </a>
+
+        <a href="#tasks" class="nav-link" data-view="tasks">
+          <svg class="nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+          </svg>
+          <span>Tasks Board</span>
+        </a>
+
+        <a href="#projects" class="nav-link" data-view="projects">
+          <svg class="nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
+          </svg>
+          <span>Projects</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button id="btn-reset-demo" class="btn-sidebar-reset" title="Reset sample projects and tasks">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+          </svg>
+          <span>Reset Sample Data</span>
+        </button>
+
+        <div class="user-snippet">
+          <div class="user-avatar">JD</div>
+          <div class="user-details">
+            <span class="user-name">Jane Doe</span>
+            <span class="user-role">Product Lead</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ==================== MAIN CONTENT WRAPPER ==================== -->
+    <div class="main-wrapper">
+
+      <!-- Top Header Navigation -->
+      <header class="top-header">
+        <div class="header-left">
+          <button id="btn-mobile-menu" class="btn-mobile-toggle" aria-label="Toggle menu">
+            <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+
+          <div class="header-search">
+            <svg class="search-icon-header" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+            <input type="text" id="global-search-input" class="search-input" placeholder="Quick search tasks...">
+          </div>
+        </div>
+
+        <div class="header-actions">
+          <button id="btn-new-project" class="btn btn-secondary">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+            </svg>
+            <span>New Project</span>
+          </button>
+
+          <button id="btn-new-task" class="btn btn-primary">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+            </svg>
+            <span>New Task</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Main Content Area -->
+      <main class="content-area">
+
+        <!-- ==================== 1. DASHBOARD VIEW ==================== -->
+        <section id="view-dashboard" class="view-content active">
+          <div class="view-header">
+            <div class="view-title-group">
+              <h2>Dashboard Overview</h2>
+              <p>Track high-level project health, task completions, and key deadlines.</p>
+            </div>
+          </div>
+
+          <!-- Dynamic 4 Metric Cards -->
+          <div id="dashboard-metrics" class="metrics-grid"></div>
+
+          <!-- Two Column Layout: Projects Progress & Urgent Tasks -->
+          <div class="dashboard-columns">
+            <div class="card-panel">
+              <div class="card-panel-header">
+                <h3>Projects Status</h3>
+                <button class="btn btn-sm btn-secondary" onclick="window.app.switchView('projects')">View All</button>
+              </div>
+              <div id="dashboard-projects-list" class="dashboard-projects-container"></div>
+            </div>
+
+            <div class="card-panel">
+              <div class="card-panel-header">
+                <h3>High Priority Tasks</h3>
+                <button class="btn btn-sm btn-secondary" onclick="window.app.switchView('tasks')">View Board</button>
+              </div>
+              <div id="dashboard-urgent-tasks" class="dashboard-tasks-container"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================== 2. TASKS BOARD VIEW ==================== -->
+        <section id="view-tasks" class="view-content">
+          <div class="view-header">
+            <div class="view-title-group">
+              <h2>Tasks Board</h2>
+              <p>Organize, filter, and track tasks across development lifecycle stages.</p>
+            </div>
+            <button class="btn btn-primary" onclick="window.app.openTaskModal()">
+              <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+              </svg>
+              <span>Add Task</span>
+            </button>
+          </div>
+
+          <!-- Filter & Live Search Toolbar -->
+          <div class="tasks-filter-bar">
+            <div class="filter-group-left">
+              <div class="filter-search-box">
+                <svg class="search-icon-header" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                <input type="text" id="search-tasks-input" class="search-input" placeholder="Search tasks by title...">
+              </div>
+            </div>
+
+            <div class="filter-group-right">
+              <select id="filter-project" class="select-control">
+                <option value="all">All Projects</option>
+              </select>
+
+              <select id="filter-priority" class="select-control">
+                <option value="all">All Priorities</option>
+                <option value="high">High Priority</option>
+                <option value="medium">Medium Priority</option>
+                <option value="low">Low Priority</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- 3-Column Kanban Board -->
+          <div class="kanban-board">
+            <!-- To Do Column -->
+            <div class="kanban-column">
+              <div class="kanban-col-header">
+                <div class="kanban-title-wrap">
+                  <span class="status-indicator-dot dot-todo"></span>
+                  <span class="kanban-col-title">To Do</span>
+                </div>
+                <span id="count-todo" class="kanban-count">0</span>
+              </div>
+              <div id="tasks-col-todo" class="kanban-tasks-list"></div>
+            </div>
+
+            <!-- In Progress Column -->
+            <div class="kanban-column">
+              <div class="kanban-col-header">
+                <div class="kanban-title-wrap">
+                  <span class="status-indicator-dot dot-inprogress"></span>
+                  <span class="kanban-col-title">In Progress</span>
+                </div>
+                <span id="count-inprogress" class="kanban-count">0</span>
+              </div>
+              <div id="tasks-col-inprogress" class="kanban-tasks-list"></div>
+            </div>
+
+            <!-- Completed Column -->
+            <div class="kanban-column">
+              <div class="kanban-col-header">
+                <div class="kanban-title-wrap">
+                  <span class="status-indicator-dot dot-completed"></span>
+                  <span class="kanban-col-title">Completed</span>
+                </div>
+                <span id="count-completed" class="kanban-count">0</span>
+              </div>
+              <div id="tasks-col-completed" class="kanban-tasks-list"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================== 3. PROJECTS VIEW ==================== -->
+        <section id="view-projects" class="view-content">
+          <div class="view-header">
+            <div class="view-title-group">
+              <h2>Projects Management</h2>
+              <p>Create and supervise workspaces, assign tasks, and monitor progress.</p>
+            </div>
+            <button class="btn btn-primary" onclick="window.app.openProjectModal()">
+              <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+              </svg>
+              <span>New Project</span>
+            </button>
+          </div>
+
+          <!-- Project Cards Grid -->
+          <div id="projects-grid" class="projects-grid"></div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- ==================== MODAL: ADD / EDIT TASK ==================== -->
+  <div id="task-modal" class="modal-overlay">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="task-modal-title">Create New Task</h3>
+        <button id="btn-close-task-modal" class="btn-icon" aria-label="Close">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <form id="task-form">
+        <input type="hidden" id="task-id-input">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="task-title-input">Task Title *</label>
+            <input type="text" id="task-title-input" class="form-input" placeholder="e.g. Implement user authentication" required>
+          </div>
+
+          <div class="form-group">
+            <label for="task-desc-input">Description</label>
+            <textarea id="task-desc-input" class="form-textarea" placeholder="Add specific requirements or notes..."></textarea>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="task-project-select">Project *</label>
+              <select id="task-project-select" class="form-select" required></select>
+            </div>
+
+            <div class="form-group">
+              <label for="task-priority-select">Priority</label>
+              <select id="task-priority-select" class="form-select">
+                <option value="low">Low</option>
+                <option value="medium" selected>Medium</option>
+                <option value="high">High</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="task-status-select">Status</label>
+              <select id="task-status-select" class="form-select">
+                <option value="todo" selected>To Do</option>
+                <option value="in_progress">In Progress</option>
+                <option value="completed">Completed</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="task-due-date-input">Due Date</label>
+              <input type="date" id="task-due-date-input" class="form-input">
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" id="btn-cancel-task" class="btn btn-secondary">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Task</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==================== MODAL: CREATE PROJECT ==================== -->
+  <div id="project-modal" class="modal-overlay">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>Create New Project</h3>
+        <button id="btn-close-project-modal" class="btn-icon" aria-label="Close">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <form id="project-form">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="project-name-input">Project Name *</label>
+            <input type="text" id="project-name-input" class="form-input" placeholder="e.g. Website Revamp 2026" required>
+          </div>
+
+          <div class="form-group">
+            <label for="project-desc-input">Description</label>
+            <textarea id="project-desc-input" class="form-textarea" placeholder="Outline the main goals of this project..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="project-color-input">Project Color Accent</label>
+            <div class="color-picker-wrap">
+              <input type="color" id="project-color-input" class="color-input" value="#6366f1">
+              <span class="color-hint">Color code used for visual identification tags and progress indicators</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" id="btn-cancel-project" class="btn btn-secondary">Cancel</button>
+          <button type="submit" class="btn btn-primary">Create Project</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==================== MODAL: DELETE CONFIRMATION ==================== -->
+  <div id="confirm-modal" class="modal-overlay">
+    <div class="modal-card" style="max-width: 440px;">
+      <div class="modal-header">
+        <h3 id="confirm-modal-title">Confirm Deletion</h3>
+        <button id="btn-close-confirm-modal" class="btn-icon" aria-label="Close">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p id="confirm-modal-message" style="color: var(--text-secondary); line-height: 1.5;"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="btn-cancel-confirm" class="btn btn-secondary">Cancel</button>
+        <button type="button" id="btn-confirm-delete" class="btn btn-danger">Delete Permanently</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Alert Notifications Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- JavaScript Modules -->
+  <script src="js/store.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
